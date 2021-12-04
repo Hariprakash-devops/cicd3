@@ -1,0 +1,15 @@
+URL01:
+https://github.com/Deepasj/cdond-c3-projectstarter
+https://github.com/Deepasj/cdond-c3-projectstarter.git
+
+URL02:
+S3 Bucket URL
+http://udapeople-925d69e.s3-website-us-east-1.amazonaws.com/
+
+URL03:
+CloudFront URL
+http://d2vpnmcdzgahdt.cloudfront.net/
+
+URL04
+Backend public IP address
+http://184.73.145.0:3030/api/status
