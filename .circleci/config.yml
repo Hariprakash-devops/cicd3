@@ -153,7 +153,6 @@ jobs:
           name: Back-end scan
           command: |
              cd backend
-             npm install
              npm audit fix --audit-level=critical --force
 
   deploy-infrastructure:
@@ -348,7 +347,6 @@ jobs:
             echo "Contents  of the inventory.txt file is -------"
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
-            ansible-playbook -i inventory.txt node-exporter.yml
       - destroy_environment:
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
       - revert_migrations:
