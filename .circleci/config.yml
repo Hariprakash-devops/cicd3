@@ -340,6 +340,8 @@ jobs:
             pwd
             mkdir -p ./.circleci/ansible/roles/deploy/files/
             mv artifact.tar.gz ./.circleci/ansible/roles/deploy/files/
+            cd ..
+            cd backend
             cp package* ./dist
             cd dist
             npm i
