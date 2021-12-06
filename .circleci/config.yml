@@ -340,13 +340,6 @@ jobs:
             pwd
             mkdir -p ./.circleci/ansible/roles/deploy/files/
             mv artifact.tar.gz ./.circleci/ansible/roles/deploy/files/
-            cd ..
-            cd backend
-            cp package* ./dist
-            cd dist
-            npm i
-            cd ..
-            tar -czf dist.tar.gz dist
 #R            cd backend
 #R            npm install -g npm@latest
 #R            npm i
@@ -356,6 +349,15 @@ jobs:
 #R            npm i
 #R            cd ..
 #R            tar -czf dist.tar.gz dist
+      - run:
+          name: Build backend app1
+          command: |
+            cd backend
+            cp package* ./dist
+            cd dist
+            npm i
+            cd ..
+            tar -czf dist.tar.gz dist
       - run:
           name: Deploy backend
           working_directory: ./.circleci/ansible
