@@ -323,6 +323,7 @@ jobs:
           name: Install dependencies
           command: |
             apk add --update ansible
+            apk add --update tar gzip
             apk add --update nodejs
             apk add --update npm
             apk add --update curl
@@ -332,14 +333,22 @@ jobs:
           name: Build backend app
           command: |
             cd backend
-            npm install -g npm@latest
             npm i
             npm run build
-            cp package* ./dist
-            cd dist
-            npm i
-            cd ..
-            tar -czf dist.tar.gz dist
+            cd ..   
+            tar -C backend -czvf artifact.tar.gz .
+            pwd
+            mkdir -p ./.circleci/ansible/roles/deploy/files/
+            mv artifact.tar.gz ./.circleci/ansible/roles/deploy/files/
+#R            cd backend
+#R            npm install -g npm@latest
+#R            npm i
+#R            npm run build
+#R            cp package* ./dist
+#R            cd dist
+#R            npm i
+#R            cd ..
+#R            tar -czf dist.tar.gz dist
       - run:
           name: Deploy backend
           working_directory: ./.circleci/ansible
